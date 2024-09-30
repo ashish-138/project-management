@@ -1,0 +1,117 @@
+
+.loginbottom{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logginbwrapper{
+    width: 50%;
+    height: 65%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+}
+
+.login-bt-wr-l{
+    flex: 6;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img{
+    height: 150px;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-top: -30px;
+    top: 40px;
+}
+
+.login-bt-wr-r-txt{
+    justify-self: center;
+    color: #192c5e;
+    font-size: 200%;
+    margin-bottom: 10px;
+
+}
+
+.login-bt-wr-r{
+    flex:6;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid #000;
+}
+
+.loginEmail{
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.loginPwd{
+    width: 70%;
+    height: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.loginBtn{
+    width: 40%;
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #192c5e;
+    color: #ceedfd;
+}
+
+.loginBtn:hover{
+    background-color: #3a4f82;
+    font-size: 17px;
+}
+
+.fg-pwd{
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #192c5e;
+}
+
+.fg-pwd:hover{
+    color: #3a4f82;
+}
+
+.signupBtn{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #192c5e;
+    color: #ceedfd;
+}
+
+.signupBtn:hover{
+    background-color: #3a4f82;
+    font-size: 16px;
+}

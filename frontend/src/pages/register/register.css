@@ -1,0 +1,115 @@
+
+.registerbottom{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerbwrapper{
+    width: 50%;
+    height: 65%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+}
+
+.register-bt-wr-l{
+    flex: 6;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-img{
+    height: 150px;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 50%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-top: -30px;
+    top: 40px;
+}
+
+.register-bt-wr-r-txt{
+    justify-self: center;
+    color: #192c5e;
+    font-size: 200%;
+    margin-bottom: 10px;
+
+}
+
+.register-bt-wr-r{
+    flex:6;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 3px solid #000;
+}
+
+.signupwrapper{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.registerEmail{
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.registerName{
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.registerPwd{
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.registerBtn{
+    width: 40%;
+    height: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #192c5e;
+    color: #ceedfd;
+}
+
+.registerBtn:hover{
+    background-color: #3a4f82;
+    font-size: 17px;
+}
+
+.login{
+    cursor: pointer;
+    color: #192c5e;
+}

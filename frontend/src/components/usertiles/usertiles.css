@@ -1,0 +1,40 @@
+.usertiles{
+    display: flex;
+    height: 250px;
+    width: 250px;
+    margin: 25px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.52);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.45);
+    box-sizing: border-box;
+    flex-direction: column;  
+    align-items: center;
+    justify-content: center;  
+    cursor: pointer;
+}
+
+.userimg{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.username{
+    font-size: 140%;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.projects{
+    font-size: 120%;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.status{
+    font-size: 120%;
+    font-weight: 500;
+    margin-bottom: 5px;   
+}

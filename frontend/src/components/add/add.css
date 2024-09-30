@@ -1,0 +1,108 @@
+
+.notes{
+    padding: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.add{
+    background-color: rgb(1, 33, 94);
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 85%;
+    right: 3%;
+    box-shadow: 1px 1px 12px 3px rgba(0,0,0,0.83);
+-webkit-box-shadow: 1px 1px 12px 3px rgba(0,0,0,0.83);
+-moz-box-shadow: 1px 1px 12px 3px rgba(0,0,0,0.83);
+cursor: pointer;
+}
+
+.add:hover{
+    background-color: rgb(50, 119, 221);
+}
+
+.addBtn{
+   color: white;
+   font-size: 60px;
+
+}
+
+.note{
+    height: 250px;
+    width: 250px;
+    background-color: rgb(241, 241, 241);
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    border-radius: 20PX;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    right: 43% ;
+    top:30%;
+    position: fixed;
+    z-index: 2;
+}
+
+.container{
+    border: 1px solid black;
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    height: 100vh;
+    z-index:1;
+    position: fixed;
+    top: 0%;
+    opacity: 0.9;
+}
+
+.projectNote{
+    width: 90%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.submit{
+    width: 85%;
+    height: 40px;
+    background-color: #192c5e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #ceedfd;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submit:Hover{
+        background-color: #081433;
+}
+
+.cancle{
+    width: 85%;
+    height: 40px;
+    background-color: #192c5e;
+    border-radius: 10px;
+    color: #ceedfd;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancle:Hover{
+    background-color: #081433;
+}
+
+.note-xt{
+    margin-bottom: 20px;
+    font-weight: 700;
+}

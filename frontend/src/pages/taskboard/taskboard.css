@@ -1,0 +1,98 @@
+.task{
+    height: 150px;
+    width: 900px;
+    background-color: rgb(241, 241, 241);
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    border-radius: 20PX;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+    right: 20% ;
+    top:40%;
+    position: fixed;
+    z-index: 2;
+}
+
+.task-page{
+    text-align: center;
+    font-size: large;
+    position: fixed;
+    right: 45%;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size:x-large;
+}
+
+
+.task-container{
+    border: 1px solid black;
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    height: 100vh;
+    z-index:1;
+    position: fixed;
+    top: 0%;
+    opacity: 0.9;
+}
+
+.taskNote{
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 3px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.submit-task{
+    width: 10%;
+    height: 40px;
+    margin-left: 5px;
+    background-color: #192c5e;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #ceedfd;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submit-task:Hover{
+        background-color: #081433;
+}
+
+.cancle-task{
+    width: 10%;
+    height: 40px;
+    margin-left: 5px;
+    background-color: #192c5e;
+    border-radius: 10px;
+    color: #ceedfd;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cancle-taxk:Hover{
+    background-color: #081433;
+}
+
+.note-task{
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: x-large;
+    text-align: center;
+}
+
+.task-btm{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 15px;
+}
+
+.task-bottom{
+    margin-top: 50px;
+}
