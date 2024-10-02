@@ -44,7 +44,7 @@ export default function Topbar() {
   }
 
   const projectHandle = ()=>{
-        navigate("/")
+        navigate("/admin/projects")
   }
 
   const searchHandle = ()=>{

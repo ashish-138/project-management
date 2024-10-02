@@ -23,7 +23,7 @@ function Home() {
     <Route path="/register" element={<Register/>}/>
     <Route path="/projects" element={<Taskboard />}/>
     <Route path="/admin/users" element={<Adminboard />}/>
-    <Route path="/" element={<Adminprojectboard/>}/>
+    <Route path="/admin/projects" element={<Adminprojectboard/>}/>
     </Routes>
     </Router>
       

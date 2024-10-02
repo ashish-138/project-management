@@ -9,7 +9,7 @@ export default function Adminprojectboard() {
 
 
 
-        const [allprojects,setAllprojects]=useState()
+        const [allprojects,setAllprojects]=useState([])
 
 
         useEffect(()=>{

@@ -3,6 +3,7 @@ import {Doughnut} from "react-chartjs-2"
 import "./taskdashboard.css"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -10,6 +11,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Taskdashboard({project}) {
 
+    const navigate = useNavigate()
     const [allprojects,setAllprojects] = useState()
     const [allusers,setAllusers]=useState()
     const [alltask,setAlltask]=useState()
@@ -59,11 +61,15 @@ export default function Taskdashboard({project}) {
     },[])
 
 
+    const clickHandle = ()=>{
+              // navigate("/projects")
+    }
+
 
 
 
   return (
-    <div className="taskdashboard">
+    <div className="taskdashboard">{alltask?
         <div className="t-chart">
                     <Doughnut
                         data={{
@@ -82,8 +88,8 @@ export default function Taskdashboard({project}) {
                             borderWidth:2
                         }]}}
                     />
-        </div>
-        <div className="t-info">
+        </div>:""}
+        <div className="t-info" onClick={clickHandle}>
                     <span className="p-name">{project?project.projectName:""}</span>
                     <span className="p-user">Assigned to : {allusers?allusers.name:""}</span>
                     {!true?<div className="status-pending">Pending</div>: <div className="status-complete">Completed</div>}

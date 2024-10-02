@@ -19,7 +19,6 @@ export default function Usertiles({users}) {
           const result = await axios.post("http://127.0.0.1:8000/api/projects",token)
           let x=result.data;
           const data = x.filter((e)=>e.userId===users._id)
-          console.log(data);
           setProjectLength(data.length)
         } catch (error) {
           console.log(error);
@@ -31,7 +30,7 @@ export default function Usertiles({users}) {
   },[])
 
     const clickHandle = ()=>{
-      navigate("/")
+      console.log(users);
     }
 
   return (

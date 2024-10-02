@@ -27,9 +27,14 @@
 }
 
 .p-name{
+    width: 260px;
+    height: 30px;
     font-size: x-large;
     font-weight: 600;
     margin-bottom: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .p-user{
@@ -51,7 +56,7 @@
 }
 
 .status-complete{
-    margin-right: 20px;
+    /* margin-right: 20px; */
     width: 50%;
     border: 1px solid green;
     border-radius: 30px;
