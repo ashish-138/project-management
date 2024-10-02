@@ -21,8 +21,7 @@ export default function Topbar() {
     const token = {token:auth}
       try {
         const result = await axios.post("http://127.0.0.1:8000/api/user", token)
-        setUser(result.data)  
-        console.log(user);       
+        setUser(result.data)      
       } catch (error) {
         console.log(error);
       }

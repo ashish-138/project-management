@@ -84,10 +84,10 @@ export default function ProjectTiles({project}) {
         <div className="prj-bottom" onClick={clickHandel}>
             <div className="prj-bottom-left">
                 <div className="bottom-left">
-                    <span className="left">Completed : {projectValue.completed}%</span>
+                    <span className="left">Completed : {Math.floor(projectValue.completed)}%</span>
                 </div>
                 <div className="bottom-left">
-                    <span className="left">Pending : {projectValue.pending}%</span>
+                    <span className="left">Pending : {Math.floor(projectValue.pending)}%</span>
                 </div>
             </div>
             <div className="prj-bottom-right">

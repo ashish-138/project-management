@@ -1,22 +1,24 @@
 import Topbar from "../../components/topbar/Topbar"
 import Taskplates from "../../components/taskplates/Taskplates"
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
+import UserContext from "../../context/UserContext"
 import axios from "axios"
 import "./taskboard.css"
 
 
 export default function Taskboard() {
 
+  const {updates,setUpdates} = useContext(UserContext)
+
   const [task, setTask] = useState()
   const [states,setStates] = useState(false)
-  const [update,setUpdate] = useState(false)
 
   const discription = useRef()
 
   useEffect(() => {
     
     getTaskdata()
-  },[states])
+  },[states, updates])
 
   async function getTaskdata (){
   const auth = localStorage.getItem("projectId")
@@ -24,15 +26,24 @@ export default function Taskboard() {
       try {
         const result = await axios.get(`http://127.0.0.1:8000/api/project/task/${auth}`)
         setTask(result.data)
+       let taskData = result.data.map((e)=>{
+              let x= {
+                discription:e.discription,
+                status:e.status
+              }
+              return x;
+       })
+      
+        localStorage.setItem("tasks", JSON.stringify(taskData))
       } catch (error) {
         console.log(error);
       }
     }
 
-  useEffect(()=>{},[states, update,task])
 
   const addTaskHandle = ()=>{
         setStates(true)
+        setUpdates(!updates)
   }
 
   const submitHandle = async()=>{
@@ -46,7 +57,7 @@ export default function Taskboard() {
         } catch (error) {
           console.log(error);
         }
-        setUpdate(!update)
+        setUpdates(!updates)
         setStates(false)
   }
 
@@ -71,7 +82,7 @@ export default function Taskboard() {
           <div className="task-btm">
           <input type="text" className="taskNote" ref={discription} placeholder="Enter Task Discription" required />
           <button className="submit-task" onClick={submitHandle}>Submit</button>
-          <button className="cancle-task" onClick={cacleHandler}>Cancle</button>
+          <button className="cancle-task" onClick={cacleHandler}>Cancel</button>
           </div>
         </div>
       </div> : ""}

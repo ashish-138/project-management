@@ -48,11 +48,10 @@ router.get("/project/statics/:projectId",async(req,res)=>{
     try {
         const result = await Task.find({projectId:req.params.projectId})
         if(result){
-        const pending = result.filter((pending)=>pending.status=="Pending")
+        const pendings = result.filter((pending)=>pending.status=="pending")
         const data = {length:result.length,
-                      pending:pending.length
+                      pending:pendings.length
                     }
-                    console.log(data);
         res.status(200).json(data)
                 }
             else{
