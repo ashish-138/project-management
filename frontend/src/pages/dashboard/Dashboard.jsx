@@ -11,20 +11,43 @@ import axios from "axios";
 export default function Dashboard() {
 
 
-    const {user,setUser,setUpdates} = useContext(UserContext)
+    const {admin} = useContext(UserContext)
 
     const [users,setUsers] = useState({})
     const [projects,setProjects] = useState([])
-    const navigate = useNavigate()
+    const history = useNavigate()
 
+
+    
     useEffect(()=>{
-      const auth = localStorage.getItem("token")
-      if(!auth){
-        navigate("/login")
-      }
-      getUser(auth);
+      const auth = !admin?localStorage.getItem("token"):admin;
+      if(!admin){checkprelogin(auth)}
+      if(!admin){getUser(auth)
+        }else{
+            setUsers(admin)
+        }
+      
       getProjects(auth);   
-    },[setUpdates])
+    },[])
+
+
+    async function checkprelogin(auth){
+      if(auth){
+      const data = {token:auth}
+      try {
+          const user = await axios.post("http://localhost:8000/api/user",data)
+          if(user){
+              history("/")
+          }else{
+              history("/login")
+          }
+      } catch (error) {
+          console.log(error);
+      }}
+      else{
+        history("/login")
+      }
+  }
 
     async function getUser(token){
       let data = {token:token}
@@ -35,8 +58,10 @@ export default function Dashboard() {
         console.log(error);
       }
     }
+
+
     async function getProjects(token){
-      let data = {token:token}
+      let data = !admin?{token:token}:{userId:token._id}
       try {
         const result = await axios.post("http://localhost:8000/api/projects",data)
         setProjects(result.data)

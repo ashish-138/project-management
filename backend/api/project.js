@@ -20,15 +20,32 @@ router.post("/project", async (req, res) => {
 
 //find Projects
 router.post("/projects", async (req, res) => {
+    
     try {
+        if(!req.body.userId && !req.body.projectId){
         const verify = jwt.verify(req.body.token,process.env.REFERESH_TOKEN_SECRET) 
         if(verify.isAdmin){
             const projects = await project.find()
             res.status(200).json(projects)
         }else{
-        const projects = await project.find({ userId: verify._id })
-        res.status(200).json(projects)
+            if(req.body.projectId){
+                const projects = await project.find({ _id: req.body.projectId })
+                res.status(200).json(projects)
+            }
+            else{
+                const projects = await project.find({ userId: verify._id })
+                res.status(200).json(projects)
+            }
         }
+    }else{
+                if(!req.body.projectId){
+                const projects = await project.find({ userId: req.body.userId })
+                res.status(200).json(projects)
+                }else{
+                    const projects = await project.find({ _id: req.body.projectId })
+                    res.status(200).json(projects)
+                }
+    }
     } catch (error) {
         res.status(500).json(error)
     }

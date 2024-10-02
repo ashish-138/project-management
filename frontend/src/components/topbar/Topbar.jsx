@@ -51,6 +51,8 @@ export default function Topbar() {
     
   }
 
+  const homebtnHandel = ()=>(navigate("/"))
+
 
   return (
     <div className='topbar'>
@@ -76,10 +78,12 @@ export default function Topbar() {
           <button className='log-out' onClick={logoutHandle} >Log Out</button>
         </div></> :
         <div className="topright">
+          {user?<>
+          <span className="homebtn" onClick={homebtnHandel}>Home</span>
           <img src={user ? user.profilepicture ? user.profilepicture : "/images/profile.jpg" : ""} alt="" className='profile-img' />
-          <span className="user">{user.name}</span>
-          <button className='log-out' onClick={logoutHandle} >Log Out</button>
-        </div> : ""}
+          <span className="user-rt">{user.name}</span>
+          <button className='log-out' onClick={logoutHandle} >Log Out</button></>:""}
+        </div>:""} 
         </div>
   )
 }

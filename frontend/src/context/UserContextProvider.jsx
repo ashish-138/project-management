@@ -8,10 +8,11 @@
     const [project,setProject] =useState(0);
     const [token,setToken] = useState(0)
     const [updates,setUpdates] = useState(false)
+    const [admin,setAdmin] = useState("")
 
 
     return(
-        <UserContext.Provider value={{user,setUser,project,setProject,token,setToken,updates,setUpdates}} >
+        <UserContext.Provider value={{user,setUser,project,setProject,token,setToken,updates,setUpdates,admin,setAdmin}} >
         {children}
         </UserContext.Provider>
     )

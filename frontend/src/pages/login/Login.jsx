@@ -1,4 +1,4 @@
-import { useRef, useEffect, useContext } from "react"
+import { useRef, useEffect, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import axios from "axios";
@@ -9,16 +9,32 @@ export default function Login() {
 
     const {setUser,setToken} = useContext(UserContext)
 
+    const [errmsg,setErrmsg] = useState(false)
+
     const email=useRef();
     const password=useRef();
     const history = useNavigate()
 
     useEffect(()=>{
         const auth= localStorage.getItem('token');
-        if (auth){
-                history("/");
+        if(auth){
+        checkprelogin(auth)
         }
-    })
+    },errmsg)
+
+    async function checkprelogin(auth){
+        const data = {token:auth}
+        try {
+            const user = await axios.post("http://localhost:8000/api/user",data)
+            if(user){
+                history("/")
+            }else{
+                // history("/login")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const submitHandle = async (e)=>{
         e.preventDefault();
@@ -27,16 +43,18 @@ export default function Login() {
           email:email.current.value,
           password:password.current.value
         }
-            console.log(user);
             const res = await axios.post("http://127.0.0.1:8000/api/login",user);
             setToken(res.data.token)
             setUser(res.data.data)
             await localStorage.setItem("token",res.data.token);
             history("/");
         }catch(err){
-          alert(err.response.data)
-          console.log(err.response.data)
+          setErrmsg(true)
         }
+      }
+
+      const errorHandle = ()=>{
+        setErrmsg(false)
       }
 
 
@@ -60,8 +78,9 @@ export default function Login() {
                     </div>
                     <form className="login-bt-wr-r" onSubmit={submitHandle}>
                         <span className="login-span">Login to your account</span>
-                        <input type="email" className="loginEmail" ref={email} placeholder="Enter your Email..." required />
-                        <input type="password" className="loginPwd" ref={password} placeholder="Enter your password..." required />
+                        {errmsg?<span className="err-msg">Invalid Credentials!!!</span>:""}
+                        <input type="email" className="loginEmail" ref={email} onClick={errorHandle} placeholder="Enter your Email..." required />
+                        <input type="password" className="loginPwd" ref={password} onClick={errorHandle} placeholder="Enter your password..." required />
                         <button className="loginBtn" type="submit">Log in</button>
                         <span className="fg-pwd" >Forgot Password</span>
                         <button className="signupBtn" onClick={signupHandle}>Create New Account</button>

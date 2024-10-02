@@ -1,12 +1,14 @@
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import "./usertiles.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import UserContext from "../../context/UserContext"
 
 export default function Usertiles({users}) {
 
   const [projectlength,setProjectLength]= useState()
+  const {setAdmin} = useContext(UserContext)
   const navigate = useNavigate()
 
 
@@ -30,7 +32,8 @@ export default function Usertiles({users}) {
   },[])
 
     const clickHandle = ()=>{
-      console.log(users);
+      setAdmin(users)
+      navigate("/")
     }
 
   return (

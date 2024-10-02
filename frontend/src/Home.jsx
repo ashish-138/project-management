@@ -6,8 +6,7 @@ import Adminboard from "./pages/admindashboard/Adminboard";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Adminprojectboard from "./pages/adminprojectboard/Adminprojectboard";
-import { useEffect } from "react";
-import axios from "axios";
+
 
 
 

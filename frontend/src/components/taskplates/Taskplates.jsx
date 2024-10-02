@@ -26,7 +26,6 @@ export default function Taskplates({data}) {
 
 
   function getStatus(){
-    console.log(data.status);
     if(data){
       data.status==="completed"?setPending(true):setPending(false)
       setNewData(data)}

@@ -1,4 +1,4 @@
-import { useRef,useEffect } from "react"
+import { useRef,useEffect, useState } from "react"
 import Topbar from "../../components/topbar/Topbar"
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,8 @@ import "./register.css"
 
 export default function Register() {
 
+    const [errmsg, setErrmsg] = useState(false)
+    const [errpwd,setErrpwd] = useState(false)
     const name = useRef();
     const email = useRef();
     const password = useRef();
@@ -15,11 +17,23 @@ export default function Register() {
 
 
     useEffect(() => {
-        const auth = localStorage.getItem("noteapp");
-        if (auth) {
-            history("/");
-        }
+        const auth = localStorage.getItem("token");
+        checkprelogin(auth)
     })
+
+    async function checkprelogin(auth){
+        const data = {token:auth}
+        try {
+            const user = await axios.post("http://localhost:8000/api/user",data)
+            if(user){
+                history("/")
+            }else{
+                history("/register")
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const clickHandle = async (e) => {
         e.preventDefault();
@@ -40,10 +54,6 @@ export default function Register() {
                 history("/login")
             } catch (err) {
                 console.log(err);
-                if (err.response.data.code === 11000) {
-                    alert(email.current.value + " is already registered!")
-
-                }
             }
         }
     }
@@ -51,6 +61,24 @@ export default function Register() {
     const loginHandle = (e) => {
         e.preventDefault();
         history("/login");
+    }
+
+    const onblurHandl = async() =>{
+        console.log(email.current.value);
+        try {
+            const result = await axios.post(`http://127.0.0.1:8000/api/register/${email.current.value}`)
+            if(result.data.length===1){
+                setErrmsg(true)
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const cnfpwdHandle = () =>{
+        if(cnfpassword.current.value !== password.current.value){
+            setErrpwd(true)
+        }
     }
 
     
@@ -70,10 +98,12 @@ export default function Register() {
                     <div className="register-bt-wr-r">
                         <form className="signupwrapper" onSubmit={clickHandle}>
                             <span className="register-span">Create A New Account</span>
-                            <input type="email" ref={email} className="registerEmail" placeholder="Enter your Email" required />
+                            {errmsg?<span className="rg-err-msg">Email is already registered!!!</span>:""}
+                            <input type="email" ref={email} className="registerEmail" onBlur={onblurHandl} onFocus={()=>(setErrmsg(false))} placeholder="Enter your Email" required />
                             <input type="text" ref={name} className="registerName" placeholder="Enter your Full Name" minLength={3} required />
                             <input type="password" ref={password} className="registerPwd" placeholder="Enter New Password" minLength={6} required />
-                            <input type="password" ref={cnfpassword} className="registerPwd" placeholder="Enter Confirm Password" minLength={6} required />
+                            {errpwd?<span className="pwd-err">Password don't match!!!</span>:""}
+                            <input type="password" ref={cnfpassword} className="registerPwd" onBlur={cnfpwdHandle} onFocus={()=>(setErrpwd(false))} placeholder="Enter Confirm Password" minLength={6} required />
                             <button className="registerBtn" type="submit">Sign up</button>
 
                         </form>

@@ -4,24 +4,50 @@ import { useContext, useEffect, useRef, useState } from "react"
 import UserContext from "../../context/UserContext"
 import axios from "axios"
 import "./taskboard.css"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Taskboard() {
 
-  const {updates,setUpdates} = useContext(UserContext)
+  const {updates,setUpdates, admin} = useContext(UserContext)
 
-  const [task, setTask] = useState()
+  const [task, setTask] = useState("")
   const [states,setStates] = useState(false)
+  const [projectdata,setProjectData] = useState("")
 
   const discription = useRef()
+  const history = useNavigate()
 
   useEffect(() => {
-    
+    if(!admin){
+    checkprelogin()}
+
     getTaskdata()
+    
   },[states, updates])
 
+  async function checkprelogin(){
+    const auth = localStorage.getItem("token")
+    if(auth){
+    const data = {token:auth}
+    try {
+        const user = await axios.post("http://localhost:8000/api/user",data)
+        if(user){
+            history("/projects")
+        }else{
+            history("/login")
+        }
+    } catch (error) {
+        console.log(error);
+    }}
+    else{
+      history("/login")
+    }
+}
+
   async function getTaskdata (){
-  const auth = localStorage.getItem("projectId")
+  const auth =!admin? localStorage.getItem("projectId"):admin._id;
+  const token= localStorage.getItem("token")
     
       try {
         const result = await axios.get(`http://127.0.0.1:8000/api/project/task/${auth}`)
@@ -38,6 +64,21 @@ export default function Taskboard() {
       } catch (error) {
         console.log(error);
       }
+      try {
+        
+          let data={}
+          if(!admin){
+          data={token:token,
+          projectId:auth
+        }}else{
+          data={projectId:admin._id}
+          console.log(data);
+        }
+        const result = await axios.post("http://localhost:8000/api/projects",data)
+        setProjectData(result.data)
+      } catch (error) {
+        console.log(error);
+      }
     }
 
 
@@ -47,7 +88,7 @@ export default function Taskboard() {
   }
 
   const submitHandle = async()=>{
-        const auth = localStorage.getItem("projectId")
+        const auth = !admin?localStorage.getItem("projectId"):admin._id;
         const data = {
           projectId:auth,
           discription:discription.current.value
@@ -70,7 +111,7 @@ export default function Taskboard() {
     <div className="taskboard">
       <div className="task-top">
         <Topbar />
-        <span className="task-page"> Your Project Task Board </span>
+        <span className="task-page">{!task.length?"Your Project Task Board":projectdata?projectdata[0].projectName:"" } </span>
       </div>
       <div className="task-bottom">
         {task?

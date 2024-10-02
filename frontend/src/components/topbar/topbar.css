@@ -96,6 +96,10 @@
     cursor: pointer;
 }
 
+.user-rt{
+    margin-right: 20px;
+}
+
 .home{
     text-align: center;
     display: flex;
@@ -125,4 +129,15 @@
 .log-out:hover{
     background-color:#9ba3b8 ;
 }
+
+.homebtn{
+    margin-right: 30px;
+    cursor: pointer;
+    
+}
+
+.homebtn:hover{
+    color: #a8a9ab;
+}
+
 

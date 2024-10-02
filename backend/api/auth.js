@@ -41,6 +41,17 @@ router.post("/register", async (req, res) => {
     }
 })
 
+//exist email check
+router.post(("/register/:email"), async(req,res)=>{
+    try {
+        const result = await User.find({email:req.params.email})
+        res.status(200).json(result)
+    } catch (error) {
+        res.status(500)
+    }
+})
+
+
 //login
 router.post("/login", async (req, res) => {
     try {
