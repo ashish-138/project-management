@@ -122,8 +122,10 @@ export default function Taskboard() {
           <span className="note-task"> Create Your Task </span>
           <div className="task-btm">
           <input type="text" className="taskNote" ref={discription} placeholder="Enter Task Discription" required />
+          <div className="task-btns">
           <button className="submit-task" onClick={submitHandle}>Submit</button>
           <button className="cancle-task" onClick={cacleHandler}>Cancel</button>
+          </div>
           </div>
         </div>
       </div> : ""}

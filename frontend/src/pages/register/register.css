@@ -122,3 +122,41 @@
 .pwd-err{
     color: red;
 }
+
+
+@media screen and (max-width:400px) {
+    .registerbwrapper{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 95%;
+        width: 90%;
+    }
+
+    .register-bt-wr-l{
+        width: 100%;
+    }
+
+    .register-bt-wr-r-txt{
+        margin-bottom: none;
+        margin-top: 10px;
+        text-align: center;
+        font-size: 150%;
+    }
+    
+
+    .register-bt-wr-r{
+        border: 1px solid black;
+        margin-bottom: 20px;
+        width: 90%;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    
+    .signupBtn{
+        font-size: small;
+    }
+}

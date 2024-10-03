@@ -2,3 +2,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width:400px){
+    .admin-pr-bt{
+        justify-content: center;
+    }
+}

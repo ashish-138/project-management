@@ -13,10 +13,17 @@
     cursor: pointer;
 }
 
+.project-container{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;  
+    align-items: center;
+}
+
 .t-chart{
     height: 150px;
     width: 150px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .t-info{
@@ -66,4 +73,100 @@
     background-color:#6ab04c;
     color: black;
     text-align: center;
+}
+
+.closeBtn{
+    position: absolute;
+    width: 250px;
+    display: flex;
+    text-align: center;
+    justify-content: end;
+}
+.close-icon{
+    margin-right: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgb(16, 16, 100);
+    color: white;
+}
+
+.close-icon:hover{
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+.container-delete{
+    background-color:white;
+    width: 100%;
+    height: 100vh;
+    z-index:1;
+    position: fixed;
+    top: 0%;
+    opacity: 0.9;
+}
+
+.container-2-delete{
+    height: 100px;
+    width: 250px;
+    background-color: rgb(255, 251, 251);
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.9);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 26px 3px rgba(0,0,0,1);
+    border-radius: 20PX;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    right: 43% ;
+    top:40%;
+    position: fixed;
+    z-index: 2;
+}
+
+
+.close-btns{
+    width: 70%;
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-around;
+}
+
+.close-msg{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color:orangered;
+}
+
+.cl-bt{
+    height: 40px;
+    background-color: #192c5e;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ceedfd;
+    font-size: medium;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.cl-bt:hover{
+    background-color: #9ab3ff;
+    color: white;
+}
+
+
+@media screen and (max-width:400px){
+    .container-2-delete{
+        right:10%;
+        width: 80%;
+    }
+    .close-btns{
+        width: 90%;
+    }
+    .cl-bt{
+        width: 40%;
+    }
 }

@@ -141,3 +141,28 @@
 }
 
 
+@media screen and (max-width:400px) {
+    .topleftspan{
+        display: none;
+    }
+
+    .user-rt{
+        display: none;
+    }
+
+    .homebtn{margin-right: 160px;}
+
+    .search{
+        display: none;
+    }
+    .user{
+        display: none;
+    }
+
+    .menu{
+        margin-left: -80px;
+    }
+
+}
+
+

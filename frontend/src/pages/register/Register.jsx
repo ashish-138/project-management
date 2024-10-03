@@ -70,6 +70,7 @@ export default function Register() {
             if(result.data.length===1){
                 setErrmsg(true)
             }
+            console.log(email.current.value);
         } catch (err) {
             console.log(err);
         }

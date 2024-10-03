@@ -120,3 +120,40 @@
     color: red;
     margin-top: 10px;
 }
+
+
+@media screen and (max-width:400px) {
+    .logginbwrapper{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 95%;
+        width: 90%;
+    }
+
+    .login-bt-wr-l{
+        width: 100%;
+    }
+
+    .login-bt-wr-r-txt{
+        margin-bottom: none;
+        margin-top: 10px;
+        font-size: 150%;
+        text-align: center;
+
+    }
+    
+
+    .login-bt-wr-r{
+        border: 1px solid black;
+        margin-bottom: 20px;
+        width: 90%;
+        border-radius: 10px;
+    }
+    
+    .signupBtn{
+        font-size: small;
+    }
+}

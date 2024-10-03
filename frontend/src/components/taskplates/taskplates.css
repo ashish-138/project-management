@@ -89,3 +89,13 @@
 .icon-d:hover{
     color: red;
 }
+
+
+@media screen and (max-width:400px) {
+
+    .task-discription{
+        width: 180px;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}

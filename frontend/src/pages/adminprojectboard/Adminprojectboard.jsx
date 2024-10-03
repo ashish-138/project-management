@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Topbar from "../../components/topbar/Topbar"
 import Taskdashboard from "../taskdashboard/Taskdashboard"
 import axios from "axios"
 import "./adminprojectboard.css"
 import { useNavigate } from "react-router-dom"
+import UserContext from "../../context/UserContext"
 
 
 export default function Adminprojectboard() {
 
 
-
+  const{updates} = useContext(UserContext)
   const [allprojects, setAllprojects] = useState([])
   const history = useNavigate()
 
@@ -21,7 +22,7 @@ export default function Adminprojectboard() {
     checkprelogin(auth)
     getaccess(token);
     }
-  }, [])
+  }, [updates])
 
   async function checkprelogin(auth) {
     if (auth) {

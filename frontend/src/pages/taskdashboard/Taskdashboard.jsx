@@ -1,4 +1,5 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import CloseIcon from '@mui/icons-material/Close';
 import {Doughnut} from "react-chartjs-2"
 import "./taskdashboard.css"
 import { useContext, useEffect, useState } from 'react';
@@ -12,11 +13,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Taskdashboard({project}) {
 
+
     const navigate = useNavigate()
-    const {setAdmin} = useContext(UserContext)
+    const {setAdmin,setUpdates} = useContext(UserContext)
     const [allprojects,setAllprojects] = useState()
     const [allusers,setAllusers]=useState()
     const [alltask,setAlltask]=useState()
+    const [cnfclose, setCnfclose] = useState(false)
 
     useEffect(()=>{
           const auth = localStorage.getItem("token");
@@ -62,17 +65,43 @@ export default function Taskdashboard({project}) {
         }
     },[])
 
+    useEffect(()=>{},[cnfclose])
+
 
     const clickHandle = ()=>{
               setAdmin(project)
               navigate("/projects")
     }
 
+    const closeHandle = ()=>{
+      setCnfclose(true)
+    }
+
+    const confirmHandle = async()=>{
+        try {
+          await axios.delete(`http://127.0.0.1:8000/api/project/${project._id}`)
+          await axios.delete(`http://127.0.0.1:8000/api/project/tasks/${project._id}`)
+          setUpdates(true)
+          setCnfclose(false)
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    const cacleHandler = ()=>{
+      setCnfclose(false)
+    }
 
 
 
   return (
-    <div className="taskdashboard" onClick={clickHandle}>{alltask?
+    <>
+    <div className="taskdashboard" >
+      <div className="closeBtn">
+        <CloseIcon className='close-icon' onClick={closeHandle} />
+      </div>
+      <div className="project-container" onClick={clickHandle}>
+      {alltask?
         <div className="t-chart">
                     <Doughnut
                         data={{
@@ -97,6 +126,17 @@ export default function Taskdashboard({project}) {
                     <span className="p-user">Assigned to : {allusers?allusers.name:""}</span>
                     {!true?<div className="status-pending">Pending</div>: <div className="status-complete">Completed</div>}
         </div>
+        </div>
     </div>
+    {cnfclose ? <div className="container-delete">
+      <div className="container-2-delete">
+      <span className="close-msg"> Do you want to Delete?</span>
+      <div className="close-btns">
+      <button className="cl-bt" onClick={confirmHandle}>Confirm</button>
+      <button className="cl-bt" onClick={cacleHandler}>Cancel</button>
+      </div>
+    </div>
+  </div> : ""}
+  </>
   )
 }
